@@ -29,10 +29,12 @@
         </div>
         <div class="modal-body row">
           <div class="col-4">
-            <img
-              :alt="item.name"
-              :src="item.image"
-            >
+            <a :href="item.url">
+              <img
+                :alt="item.name"
+                :src="item.image"
+              >
+            </a>
             <div class="stars">
               <template v-for="starId in starIds">
                 <input
@@ -159,6 +161,7 @@
 import { mapState } from 'vuex'
 
 export default {
+  name: 'FeedbackOrderForm',
   props: {
     allowGuestFeedbacks: Boolean,
     numberOfFeedbacks: Number,

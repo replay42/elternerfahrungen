@@ -278,6 +278,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackContainer',
   components: {
     'feedback-form': _FeedbackForm_vue__WEBPACK_IMPORTED_MODULE_10__.default,
     'feedback-list': _FeedbackList_vue__WEBPACK_IMPORTED_MODULE_11__.default
@@ -398,15 +399,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           },
           review: []
         };
+        var anonymous = this.$translate('Feedback::Feedback.anonymous') || 'Anonymous';
         this.feedbacks.forEach(function (feedback) {
           var author;
 
-          if ((feedback.sourceRelation[0].feedbackRelationType === 'user' || feedback.sourceRelation[0].feedbackRelationType === 'contact') && feedback.sourceRelation[0].feedbackRelationSourceId > 0 && feedback.authorName.trim().length > 0) {
+          if ((feedback.sourceRelation[0].feedbackRelationType === 'user' || feedback.sourceRelation[0].feedbackRelationType === 'contact') && feedback.sourceRelation[0].feedbackRelationSourceId > 0) {
             author = feedback.sourceRelation[0].sourceRelationLabel;
           } else if (feedback.sourceRelation[0].feedbackRelationSourceId === '0' && feedback.authorName.trim().length > 0) {
             author = feedback.authorName;
           } else {
-            author = 'Anonymous';
+            author = anonymous;
           }
 
           var review = {
@@ -627,6 +629,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackForm',
   props: {
     variationId: Number,
     options: Object
@@ -675,7 +678,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.isLoading = true;
-      this.feedback.options = this.options;
       $.ajax({
         type: 'POST',
         url: '/rest/feedbacks/feedback/create',
@@ -749,6 +751,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackList',
   components: {
     'feedback-list-entry': _FeedbackListEntry_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -956,7 +959,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: 'FeedbackListEntry',
   components: {
     'feedback-comment': function feedbackComment() {
-      return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(2)]).then(__webpack_require__.bind(__webpack_require__, /*! ./FeedbackComment.vue */ "./resources/js/src/app/components/item/singleitem/FeedbackComment.vue"));
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(__webpack_require__, /*! ./FeedbackComment.vue */ "./resources/js/src/app/components/item/singleitem/FeedbackComment.vue"));
     }
   },
   props: {
@@ -1183,8 +1186,7 @@ var mutations = {
 var actions = {
   loadFeedbackUser: function loadFeedbackUser(_ref2, _ref3) {
     var commit = _ref2.commit;
-    var data = _ref3.data,
-        itemId = _ref3.itemId,
+    var itemId = _ref3.itemId,
         variationId = _ref3.variationId;
 
     if (!loadFeedbackUserLock) {
@@ -1198,7 +1200,6 @@ var actions = {
       return $.ajax({
         type: 'GET',
         url: '/rest/feedbacks/user' + itemString,
-        data: data,
         success: function success(data) {
           commit('setFeedbackAuthenticatedUser', data);
           loadFeedbackUserLock = false;
@@ -3052,7 +3053,7 @@ var render = function() {
               "div",
               { staticClass: "stars" },
               [
-                _vm._l(5, function(i) {
+                _vm._l([5, 4, 3, 2, 1], function(i) {
                   return [
                     _c("input", {
                       directives: [

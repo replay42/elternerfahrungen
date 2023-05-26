@@ -42,7 +42,7 @@ import { mapState } from 'vuex'
 import loadFeedbackModule from '../../mixins/loadFeedbackModule'
 
 export default {
-
+  name: 'FeedbackAverage',
   mixins: [loadFeedbackModule],
   inject: {
     itemId: {

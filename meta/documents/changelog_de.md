@@ -1,5 +1,22 @@
 # Release Notes für Feedback
 
+## v4.0.8 (2023-01-05) <a href="https://github.com/plentymarkets/feedback-plugin/compare/4.0.7...4.0.8" target="_blank" rel="noopener"><b>Übersicht aller Änderungen</b></a>
+
+### Geändert
+
+- Die Logik für die Anonymisierung wurde in den Kern verschoben.
+- Die Einstellungen zur Sichtbarkeit wurden aus dem Widget in die Plugin-Konfiguration überführt.
+
+## v4.0.7 (2022-10-21) <a href="https://github.com/plentymarkets/feedback-plugin/compare/4.0.6...4.0.7" target="_blank" rel="noopener"><b>Übersicht aller Änderungen</b></a>
+
+### Geändert
+
+- Das Anklicken der Artikelbilder im Bewertungswidget für die Bestellbestätigung leitet nun auf die Artikelseite weiter. Wir bedanken uns bei User @MaxBentz für den Beitrag.
+
+### Behoben
+
+- Beim Editieren von einer Bewertung war die Reihenfolge der Bewertungssterne falsch. Dies wurde behoben. Wir bedanken uns bei User @MaxBentz für den Beitrag.
+
 ## v4.0.6 (2021-10-20)
 
 ### Geändert

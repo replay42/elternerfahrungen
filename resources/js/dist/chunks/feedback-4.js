@@ -74,6 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackOrder',
   components: {
     'feedback-order-form': _FeedbackOrderForm_vue__WEBPACK_IMPORTED_MODULE_5__.default,
     'feedback-order-item': _FeedbackOrderItem_vue__WEBPACK_IMPORTED_MODULE_6__.default
@@ -402,8 +403,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackOrderForm',
   props: {
     allowGuestFeedbacks: Boolean,
     numberOfFeedbacks: Number,
@@ -609,6 +613,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FeedbackOrderItem',
   props: {
     item: Object,
     numberOfColumns: Number
@@ -796,8 +801,7 @@ var mutations = {
 var actions = {
   loadFeedbackUser: function loadFeedbackUser(_ref2, _ref3) {
     var commit = _ref2.commit;
-    var data = _ref3.data,
-        itemId = _ref3.itemId,
+    var itemId = _ref3.itemId,
         variationId = _ref3.variationId;
 
     if (!loadFeedbackUserLock) {
@@ -811,7 +815,6 @@ var actions = {
       return $.ajax({
         type: 'GET',
         url: '/rest/feedbacks/user' + itemString,
-        data: data,
         success: function success(data) {
           commit('setFeedbackAuthenticatedUser', data);
           loadFeedbackUserLock = false;
@@ -1313,7 +1316,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "modal-body row" }, [
             _c("div", { staticClass: "col-4" }, [
-              _c("img", { attrs: { alt: _vm.item.name, src: _vm.item.image } }),
+              _c("a", { attrs: { href: _vm.item.url } }, [
+                _c("img", {
+                  attrs: { alt: _vm.item.name, src: _vm.item.image }
+                })
+              ]),
               _vm._v(" "),
               _c(
                 "div",
