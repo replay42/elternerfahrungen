@@ -118,7 +118,7 @@ const actions =
       loadFeedbackRatingSummary ({ commit }, itemId) {
         return $.ajax({
           type: 'GET',
-          url: '/rest/storefront/feedbacks/feedback/helper/summary/' + itemId,
+          url: '/rest/feedbacks/feedback/helper/summary/' + itemId,
           success: function (data) {
             commit('setFeedbackRatingSummary', data)
           },
