@@ -13,7 +13,7 @@ module.exports = env =>
         entry: "./resources/js/src/entry-client.js",
         output: {
             filename: "feedback" + (env.production ? ".min" : "") + ".js",
-            chunkFilename: "chunks/feedback-[id]"+ (env.production ? ".min" : "") + ".js",
+            chunkFilename: "chunks/feedback-[id]" + (env.production ? ".[contenthash].min" : "") + ".js",
             path: path.resolve(__dirname, "..", "..", "resources/js/dist/")
         },
         resolve: {
@@ -52,6 +52,9 @@ module.exports = env =>
         ],
         optimization: {
             chunkIds: "natural",
+            // Vue 2 async components can read their default export during scope-hoisting.
+            // Keep plugin modules isolated to avoid the resulting temporal-dead-zone error.
+            concatenateModules: false,
             minimizer: [
                 new TerserPlugin({
                     extractComments: false,
