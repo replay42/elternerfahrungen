@@ -1526,7 +1526,7 @@ var render = function() {
     "section",
     { staticClass: "feedback-container" },
     [
-      _c("div", { staticClass: "title" }, [
+      _c("h3", { staticClass: "h3" }, [
         _vm._v(
           "\n    " +
             _vm._s(_vm.$translate("Feedback::Feedback.customerReviews")) +

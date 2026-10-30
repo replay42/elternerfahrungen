@@ -1,9 +1,9 @@
 <template>
   <section class="feedback-container">
-    <div class="title">
+    <h3 class="h3">
       {{ $translate("Feedback::Feedback.customerReviews") }}
       <small class="feedback-average-count"> ({{ counts.ratingsCountTotal }})</small>
-    </div>
+    </h3>
     <div class="feedback-stars-average">
       <div class="feedback-stars-background clearfix">
         <div

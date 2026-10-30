@@ -5002,7 +5002,7 @@ var render = function() {
     { staticClass: "feedback-container" },
     [
       _vm._ssrNode(
-        '<div class="title">' +
+        '<h3 class="h3">' +
           _vm._ssrEscape(
             "\n    " +
               _vm._s(_vm.$translate("Feedback::Feedback.customerReviews")) +
@@ -5010,7 +5010,7 @@ var render = function() {
           ) +
           '<small class="feedback-average-count">' +
           _vm._ssrEscape(" (" + _vm._s(_vm.counts.ratingsCountTotal) + ")") +
-          '</small></div> <div class="feedback-stars-average"><div class="feedback-stars-background clearfix">' +
+          '</small></h3> <div class="feedback-stars-average"><div class="feedback-stars-background clearfix">' +
           _vm._ssrList(5, function(index) {
             return '<div class="feedback-star"><i class="fa fa-star"></i></div>'
           }) +
