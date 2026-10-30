@@ -25,6 +25,13 @@ const mutations =
         state.counts = counts
       },
 
+      setFeedbackRatingSummary (state, summary) {
+        state.counts = {
+          ...state.counts,
+          ...summary
+        }
+      },
+
       setFeedbacks (state, feedbacks) {
         state.feedbacks = state.feedbacks.concat(feedbacks)
       },
@@ -108,6 +115,19 @@ const actions =
         }
       },
 
+      loadFeedbackRatingSummary ({ commit }, itemId) {
+        return $.ajax({
+          type: 'GET',
+          url: '/rest/storefront/feedbacks/feedback/helper/summary/' + itemId,
+          success: function (data) {
+            commit('setFeedbackRatingSummary', data)
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.error(errorThrown)
+          }
+        })
+      },
+
       loadPaginatedFeedbacks ({ commit, state }, { itemId, feedbacksPerPage, language }) {
         if (!loadPaginatedFeedbacksLock) {
           loadPaginatedFeedbacksLock = true
@@ -115,7 +135,9 @@ const actions =
             type: 'GET',
             url: '/rest/storefront/feedbacks/feedback/helper/feedbacklist/' + itemId + '/' + state.pagination.currentPage,
             beforeSend: function (xhr) {
-              xhr.setRequestHeader('lang', language)
+              if (language) {
+                xhr.setRequestHeader('lang', language)
+              }
             },
             data: {
               feedbacksPerPage: feedbacksPerPage

@@ -48,6 +48,18 @@ class FeedbacksController extends Controller
     }
 
     /**
+     * Return only the values needed by the product-title star rating.
+     *
+     * @param int $itemId
+     * @param FeedbackService $feedbackService
+     * @return array
+     */
+    public function getRatingSummary(int $itemId, FeedbackService $feedbackService)
+    {
+        return $feedbackService->getRatingSummary($itemId);
+    }
+
+    /**
      * @param int $itemId
      * @param int $variationId
      * @param FeedbackService $feedbackService

@@ -85,13 +85,9 @@ export default {
 
   methods: {
     getAverage () {
-      const _self = this
       setTimeout(() => {
-        if (typeof _self.counts.averageValue === 'undefined') {
-          _self.$store.dispatch('loadPaginatedFeedbacks', {
-            itemId: _self.itemId,
-            feedbacksPerPage: 10
-          })
+        if (typeof this.counts.averageValue === 'undefined') {
+          this.$store.dispatch('loadFeedbackRatingSummary', this.itemId)
         }
       }, 1000)
     },

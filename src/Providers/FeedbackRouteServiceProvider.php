@@ -33,6 +33,8 @@ class  FeedbackRouteServiceProvider extends RouteServiceProvider
                 'FeedbacksController@delete')->where('feedbackId', '\d+');
             $apiRouter->get('feedbacks/feedback/helper/feedbacklist/{targetId}/{page}',
                 'FeedbacksController@paginate')->where('page', '\d+')->where('targetId', '\d+');
+            $apiRouter->get('feedbacks/feedback/helper/summary/{itemId}',
+                'FeedbacksController@getRatingSummary')->where('itemId', '\d+');
             $apiRouter->get('feedbacks/feedback/helper/average/{itemId}', 'FeedbacksController@getAverage');
             $apiRouter->get('feedbacks/feedback/helper/counts/{itemId}', 'FeedbacksController@getCounts');
         });

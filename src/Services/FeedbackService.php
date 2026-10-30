@@ -101,6 +101,25 @@ class FeedbackService
     }
 
     /**
+     * Get the minimal rating payload required by FeedbackAverage.
+     *
+     * Keeping this separate from paginate() avoids loading reviews and all
+     * variation attributes merely to render the stars beside the product name.
+     *
+     * @param int $itemId
+     * @return array
+     */
+    public function getRatingSummary($itemId)
+    {
+        $counts = $this->getCounts($itemId)['counts'];
+
+        return [
+            'averageValue' => $counts['averageValue'],
+            'ratingsCountTotal' => $counts['ratingsCountTotal']
+        ];
+    }
+
+    /**
      * Create a feedback entry in the db
      * @return mixed
      */
